@@ -16,6 +16,15 @@ export const auth = betterAuth({
     },
   },
   plugins: [anonymous(), openAPI()],
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+    },
+  },
+
+  trustedOrigins: ["http://localhost:3001", "http://127.0.0.1:3001"],
 });
 
 let _schema: ReturnType<typeof auth.api.generateOpenAPISchema>;
