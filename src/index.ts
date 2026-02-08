@@ -1,9 +1,17 @@
 import { Elysia } from "elysia";
-import { openapi } from "@elysiajs/openapi";
-import { auth } from "./auth";
+import { openapi, fromTypes } from "@elysiajs/openapi";
+import { auth, OpenAPI } from "./auth";
 
 const app = new Elysia()
-  .use(openapi())
+  .use(
+    openapi({
+      references: fromTypes(),
+      documentation: {
+        components: await OpenAPI.components,
+        paths: await OpenAPI.getPaths(),
+      },
+    }),
+  )
   .mount(auth.handler)
   .get("/", () => "Hello Elysia");
 
@@ -19,3 +27,4 @@ if (import.meta.main) {
 }
 
 export default app;
+export type App = typeof app;
