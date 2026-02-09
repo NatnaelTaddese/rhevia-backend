@@ -26,6 +26,9 @@ export const auth = betterAuth({
       enabled: true,
       domain: process.env.DOMAIN as string,
     },
+    account: {
+      storeStateStrategy: "database",
+    },
   },
 
   trustedOrigins: [
