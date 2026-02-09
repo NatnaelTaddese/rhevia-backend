@@ -22,6 +22,10 @@ export const auth = betterAuth({
       secure: true,
       httpOnly: true,
     },
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: process.env.DOMAIN as string,
+    },
   },
 
   trustedOrigins: [
