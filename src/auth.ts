@@ -17,6 +17,14 @@ export const auth = betterAuth({
   },
   plugins: [anonymous(), openAPI()],
   advanced: {
+    cookies: {
+      state: {
+        attributes: {
+          sameSite: "none",
+          secure: true,
+        },
+      },
+    },
     defaultCookieAttributes: {
       sameSite: "none",
       secure: true,
