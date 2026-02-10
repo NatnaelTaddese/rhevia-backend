@@ -1,6 +1,6 @@
-import { Elysia } from "elysia";
-import { openapi, fromTypes } from "@elysiajs/openapi";
 import { cors } from "@elysiajs/cors";
+import { fromTypes, openapi } from "@elysiajs/openapi";
+import { Elysia } from "elysia";
 import { auth, OpenAPI } from "./auth";
 
 const app = new Elysia()
