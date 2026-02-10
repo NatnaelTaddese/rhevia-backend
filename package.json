@@ -4,8 +4,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --preload dotenv/config --watch src/index.ts",
+    "auth:generate": "bunx @better-auth/cli@latest generate --output src/db/auth-schema.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "bun src/scripts/push-schema.ts",
+    "db:studio": "drizzle-kit studio",
     "db:push": "bun run db:generate && bun run db:migrate"
   },
   "dependencies": {
