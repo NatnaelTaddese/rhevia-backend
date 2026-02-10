@@ -2,6 +2,7 @@ import { cors } from "@elysiajs/cors";
 import { fromTypes, openapi } from "@elysiajs/openapi";
 import { Elysia } from "elysia";
 import { auth, OpenAPI } from "./auth";
+import { dts } from "elysia-remote-dts";
 
 const app = new Elysia()
   .use(
@@ -22,7 +23,8 @@ const app = new Elysia()
     }),
   )
   .mount(auth.handler)
-  .get("/", () => "Hello Elysia");
+  .get("/", () => "Hello Elysia")
+  .use(dts("./src/index.ts"));
 
 // On Vercel, the file is imported as a module,
 // so `import.meta.main` is `false` — it skips `.listen()` and
