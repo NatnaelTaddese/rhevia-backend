@@ -19,7 +19,7 @@ const app = new Elysia()
       origin: process.env.FRONTEND_URL as string,
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       credentials: true,
-      allowedHeaders: ["Content-Type", "Authorization"],
+      allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
     }),
   )
   .mount(auth.handler)
